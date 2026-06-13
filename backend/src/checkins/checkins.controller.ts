@@ -8,16 +8,18 @@ export class CheckinsController {
   constructor(private readonly service: CheckinsService) {}
 
   @Get()
-  getAllLatest(@Query('limit', ParseIntPipe) limit = 100): Promise<Checkin[]> {
-    return this.service.getAllLatest(limit);
+  getAllLatest(@Query('limit') limit?: string): Promise<Checkin[]> {
+    const limitNum = limit ? parseInt(limit, 10) : 100;
+    return this.service.getAllLatest(limitNum);
   }
 
   @Get('spot/:spotId')
   getBySpot(
     @Param('spotId', ParseIntPipe) spotId: number,
-    @Query('limit', ParseIntPipe) limit = 50,
+    @Query('limit') limit?: string,
   ): Promise<Checkin[]> {
-    return this.service.getBySpot(spotId, limit);
+    const limitNum = limit ? parseInt(limit, 10) : 50;
+    return this.service.getBySpot(spotId, limitNum);
   }
 
   @Get(':id')

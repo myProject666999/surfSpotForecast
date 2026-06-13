@@ -31,7 +31,7 @@ export class CheckinsService {
     await this.checkSpotExists(dto.spot_id);
     const checkin = this.repo.create({
       ...dto,
-      checkin_time: new Date(dto.checkin_time),
+      checkin_time: dto.checkin_time ? new Date(dto.checkin_time) : new Date(),
     });
     const saved = await this.repo.save(checkin);
     this.logger.debug(`Created checkin #${saved.id}`);

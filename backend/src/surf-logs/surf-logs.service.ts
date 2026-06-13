@@ -41,7 +41,7 @@ export class SurfLogsService {
     await this.checkSpotExists(dto.spot_id);
     const log = this.repo.create({
       ...dto,
-      log_date: new Date(dto.log_date),
+      log_date: dto.log_date ? new Date(dto.log_date) : new Date(),
     });
     const saved = await this.repo.save(log);
     this.logger.debug(`Created surf log #${saved.id}`);

@@ -8,8 +8,9 @@ export class CreateCheckinDto {
   @IsString()
   user_name: string;
 
+  @IsOptional()
   @IsDateString()
-  checkin_time: string;
+  checkin_time?: string;
 
   @IsOptional()
   @IsNumber()

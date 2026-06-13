@@ -7,8 +7,9 @@ export class CreateSurfLogDto {
   @IsString()
   user_name: string;
 
+  @IsOptional()
   @IsDateString()
-  log_date: string;
+  log_date?: string;
 
   @IsOptional()
   @IsString()
