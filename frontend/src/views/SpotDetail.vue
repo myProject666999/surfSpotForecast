@@ -14,7 +14,7 @@
       </div>
       <div class="spot-meta">
         <span><el-icon><Location /></el-icon> {{ spot.latitude }}, {{ spot.longitude }}</span>
-        <span><el-icon><Wind /></el-icon> 最佳风向：{{ spot.best_wind_direction }}</span>
+        <span><el-icon><Compass /></el-icon> 最佳风向：{{ spot.best_wind_direction }}</span>
         <span><el-icon><TrendCharts /></el-icon> 最佳潮汐：{{ spot.best_tide }}</span>
       </div>
       <p class="spot-desc" v-if="spot.description">{{ spot.description }}</p>
@@ -150,7 +150,7 @@ import { ref, onMounted, nextTick, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import * as echarts from 'echarts';
 import { ElMessage } from 'element-plus';
-import { Location, Wind, TrendCharts } from '@element-plus/icons-vue';
+import { Location, Compass, TrendCharts } from '@element-plus/icons-vue';
 import { surfSpotApi, forecastApi, checkinApi, surfLogApi } from '../api';
 
 const route = useRoute();

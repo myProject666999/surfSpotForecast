@@ -27,7 +27,7 @@
               <span>浪型：{{ waveTypeText(spot.wave_type) }}</span>
             </div>
             <div class="info-row">
-              <el-icon><Wind /></el-icon>
+              <el-icon><Compass /></el-icon>
               <span>最佳风向：{{ spot.best_wind_direction || '-' }}</span>
             </div>
             <div class="info-row">
@@ -53,7 +53,7 @@
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { ElMessage, ElNotification } from 'element-plus';
-import { Location, Wind, TrendCharts, Refresh, Coin } from '@element-plus/icons-vue';
+import { Location, Compass, TrendCharts, Refresh, Coin } from '@element-plus/icons-vue';
 import { surfSpotApi, forecastApi } from '../api';
 
 const router = useRouter();

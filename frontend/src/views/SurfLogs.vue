@@ -44,10 +44,10 @@
           </div>
           <div class="log-desc" v-if="log.description">{{ log.description }}</div>
           <div class="log-video" v-if="log.video_url">
-            <el-link :href="log.video_url" target="_blank" type="primary">
+            <a :href="normalizeUrl(log.video_url)" target="_blank" class="video-link">
               <el-icon><VideoPlay /></el-icon>
               查看视频
-            </el-link>
+            </a>
           </div>
         </el-card>
       </el-col>
@@ -122,6 +122,12 @@ const filtered = computed(() => {
 
 const loadData = async () => {
   [allLogs.value, spots.value] = await Promise.all([surfLogApi.list(), surfSpotApi.list()]);
+};
+
+const normalizeUrl = (url) => {
+  if (!url) return '';
+  if (/^https?:\/\//i.test(url)) return url;
+  return `https://${url}`;
 };
 
 const submitLog = async () => {
@@ -227,5 +233,16 @@ onMounted(loadData);
   display: inline-flex;
   align-items: center;
   gap: 4px;
+}
+.video-link {
+  color: #409eff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.video-link:hover {
+  color: #66b1ff;
+  text-decoration: underline;
 }
 </style>
